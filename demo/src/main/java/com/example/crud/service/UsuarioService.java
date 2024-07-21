@@ -1,6 +1,5 @@
 package com.example.crud.service;
 
-import org.springframework.stereotype.Service;
 import com.example.crud.model.Usuario;
 import com.example.crud.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,14 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
+    public Optional<Usuario> buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+    public Optional<Usuario> buscarPorUsername(String username) {
+        return usuarioRepository.findByUsername(username);
+    }
+
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
@@ -31,4 +38,3 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 }
-
